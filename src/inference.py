@@ -13,7 +13,7 @@ def inference(model_folder, title, body):
 
     pipeline = TextClassificationPipeline(model=model, tokenizer=tokenizer)
 
-    sequences = [codecs.unicode_escape_decode(f"{title}\n{body}")[0]]
+    sequences = [f"{title}\n{body}"]
 
     return pipeline(sequences)
 
