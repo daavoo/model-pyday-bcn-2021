@@ -1,0 +1,20 @@
+data_folder: data
+
+split:
+  output_folder: outs/split
+  test_size: 0.3
+
+train:
+  output_folder: outs/train
+  pretrained_model: Recognai/zeroshot_selectra_small
+  epochs: 8
+  train_batch_size: 4
+  eval_batch_size: 8
+  labels:
+  - Comida
+  - Hobby
+  - Libro
+  learning_rate: 0.0005
+
+eval:
+  output_folder: outs/eval
