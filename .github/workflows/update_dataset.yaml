@@ -1,0 +1,46 @@
+name: Update Dataset
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+
+  workflow_dispatch:
+    inputs:
+      path:
+        description: 'Path to a .dvc file within the repository'     
+        required: true
+        default: 'data.dvc' 
+      rev:
+        description: 'Commit hash, branch or tag name, etc. (any Git revision)'     
+        required: false
+        default: 'solution'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: docker://ghcr.io/iterative/cml:latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup
+        run: |
+          pip install -r requirements.txt
+
+      - name: DVC update
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+        run: dvc update ${{ github.event.inputs.path }} --rev ${{ github.event.inputs.rev }}
+
+      - name: Push changes
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+        run: |
+          dvc push
+
+      - name: CML PR 
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: cml pr "${{ github.event.inputs.path }}*"

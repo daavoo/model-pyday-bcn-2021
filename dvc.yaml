@@ -1,0 +1,49 @@
+stages:
+
+  split:
+    cmd: 
+      python src/split.py 
+      ${data_folder} 
+      ${split.output_folder} 
+      ${split.test_size}
+    deps:
+    - ${data_folder}
+    - src/split.py
+    outs:
+    - ${split.output_folder}
+    metrics:
+    - ${split.output_folder}.json:
+        cache: false
+
+  train:
+    cmd: 
+      python src/train.py
+      ${split.output_folder}
+      ${train.output_folder}
+    deps:
+    - ${split.output_folder}
+    - src/train.py
+    params:
+      - train
+    outs:
+    - ${train.output_folder}
+    live:
+      dvclive:
+        summary: true
+        html: false
+        cache: false
+
+  eval:
+    cmd: 
+      python src/eval.py
+      ${train.output_folder}
+      ${eval.output_folder}
+    deps:
+    - ${train.output_folder}
+    - src/eval.py
+    plots:
+    - ${eval.output_folder}/confusion.json:
+        cache: false
+        template: confusion
+        x: actual
+        y: predicted
