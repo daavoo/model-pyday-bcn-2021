@@ -45,10 +45,10 @@ def split(input_folder, output_folder, test_size):
 
     logger.info(f"Writing outputs to {output_folder} ...")
     with open(f"{Path(output_folder) / 'train.json'}", "w") as f:
-        json.dump({"data": train_json}, f)
+        json.dump({"data": train_json}, f, ensure_ascii=False)
 
     with open(f"{Path(output_folder) / 'val.json'}", "w") as f:
-        json.dump({"data": val_json}, f)
+        json.dump({"data": val_json}, f, ensure_ascii=False)
 
     logger.success("Done!")
 
