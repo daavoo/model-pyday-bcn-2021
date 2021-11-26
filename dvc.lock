@@ -8,22 +8,22 @@ stages:
       size: 22195
       nfiles: 30
     - path: src/split.py
-      md5: 8f931a438aa7b4d2e95ea9e36d8339d5
-      size: 2153
+      md5: d1e36ffb76fb72e5941963ce49a21e93
+      size: 2193
     outs:
     - path: outs/split
-      md5: 591b584c07e697f43eb6ddaed1267017.dir
-      size: 24807
+      md5: 9abb03d5f22c80c6aa6f1c39e371f005.dir
+      size: 23053
       nfiles: 2
     - path: outs/split.json
-      md5: faa6208554df5d6680507a72427c35d7
+      md5: 2a88d3d024104e6842f63584ab39a7f0
       size: 143
   train:
     cmd: python src/train.py outs/split outs/train
     deps:
     - path: outs/split
-      md5: 591b584c07e697f43eb6ddaed1267017.dir
-      size: 24807
+      md5: 9abb03d5f22c80c6aa6f1c39e371f005.dir
+      size: 23053
       nfiles: 2
     - path: src/train.py
       md5: 88b3603bbcc81466d7c181c439ee66ac
@@ -40,21 +40,21 @@ stages:
           - Comida
           - Hobby
           - Libro
-          learning_rate: 0.0005
+          learning_rate: 0.0001
     outs:
     - path: dvclive
-      md5: bec857546513d4b644280b2168827062.dir
-      size: 1757
+      md5: 307ae87ffebc72b98cbc45dbecc92d7a.dir
+      size: 1676
       nfiles: 10
     - path: outs/train
-      md5: 5d5b42288bddd5393b872adbbad3b4db.dir
+      md5: 174c5de08e020f74716dca05d6a20ee9.dir
       size: 91153509
       nfiles: 7
   eval:
     cmd: python src/eval.py outs/train outs/eval
     deps:
     - path: outs/train
-      md5: 5d5b42288bddd5393b872adbbad3b4db.dir
+      md5: 174c5de08e020f74716dca05d6a20ee9.dir
       size: 91153509
       nfiles: 7
     - path: src/eval.py
@@ -62,5 +62,5 @@ stages:
       size: 707
     outs:
     - path: outs/eval/confusion.json
-      md5: c4219bd457e1ebdc814b9209d67c265b
+      md5: a2af4b1ebcf6ba62b1e760aee2b90ee2
       size: 651
