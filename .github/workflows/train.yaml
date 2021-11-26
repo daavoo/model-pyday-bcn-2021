@@ -65,7 +65,7 @@ jobs:
 
           echo "### Confusion Matrix" >> report.md
           dvc plots diff \
-            --target outs/eval/predictions.json --show-vega main > vega.json
+            --target outs/eval/confusion.json --show-vega main > vega.json
           vl2png vega.json -s 1.5 | cml-publish --md  >> report.md
   
           cml send-comment --pr --update report.md
