@@ -44,23 +44,23 @@ jobs:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "## Metrics & Params" >> report.md
-          dvc exp diff main --old --show-md >> report.md
+          dvc exp diff solution --old --show-md >> report.md
 
           echo "## Plots" >> report.md
 
           echo "### Eval Loss" >> report.md
           dvc plots diff \
-            --target dvclive/eval_loss.tsv --show-vega main > vega.json
+            --target dvclive/eval_loss.tsv --show-vega solution > vega.json
           vl2png vega.json -s 1.5 | cml-publish --md  >> report.md
 
           echo "### Eval Accuracy" >> report.md
           dvc plots diff \
-            --target dvclive/eval_accuracy.tsv --show-vega main > vega.json
+            --target dvclive/eval_accuracy.tsv --show-vega solution > vega.json
           vl2png vega.json -s 1.5 | cml-publish --md  >> report.md
 
           echo "### Confusion Matrix" >> report.md
           dvc plots diff \
-            --target outs/eval/confusion.json --show-vega main > vega.json
+            --target outs/eval/confusion.json --show-vega solution > vega.json
           vl2png vega.json -s 1.5 | cml-publish --md  >> report.md
   
           cml send-comment --pr --update report.md
