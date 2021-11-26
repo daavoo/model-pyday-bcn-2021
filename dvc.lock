@@ -1,0 +1,66 @@
+schema: '2.0'
+stages:
+  split:
+    cmd: python src/split.py data outs/split 0.3
+    deps:
+    - path: data
+      md5: b44385ab179fca2f94480b9a22eab226.dir
+      size: 22195
+      nfiles: 30
+    - path: src/split.py
+      md5: 8f931a438aa7b4d2e95ea9e36d8339d5
+      size: 2153
+    outs:
+    - path: outs/split
+      md5: 591b584c07e697f43eb6ddaed1267017.dir
+      size: 24807
+      nfiles: 2
+    - path: outs/split.json
+      md5: faa6208554df5d6680507a72427c35d7
+      size: 143
+  train:
+    cmd: python src/train.py outs/split outs/train
+    deps:
+    - path: outs/split
+      md5: 591b584c07e697f43eb6ddaed1267017.dir
+      size: 24807
+      nfiles: 2
+    - path: src/train.py
+      md5: 88b3603bbcc81466d7c181c439ee66ac
+      size: 2364
+    params:
+      params.yaml:
+        train:
+          output_folder: outs/train
+          pretrained_model: Recognai/zeroshot_selectra_small
+          epochs: 8
+          train_batch_size: 4
+          eval_batch_size: 8
+          labels:
+          - Comida
+          - Hobby
+          - Libro
+          learning_rate: 0.0005
+    outs:
+    - path: dvclive
+      md5: bec857546513d4b644280b2168827062.dir
+      size: 1757
+      nfiles: 10
+    - path: outs/train
+      md5: 5d5b42288bddd5393b872adbbad3b4db.dir
+      size: 91153509
+      nfiles: 7
+  eval:
+    cmd: python src/eval.py outs/train outs/eval
+    deps:
+    - path: outs/train
+      md5: 5d5b42288bddd5393b872adbbad3b4db.dir
+      size: 91153509
+      nfiles: 7
+    - path: src/eval.py
+      md5: fa24f001e1840c0fe5752b8b64303279
+      size: 707
+    outs:
+    - path: outs/eval/confusion.json
+      md5: c4219bd457e1ebdc814b9209d67c265b
+      size: 651
