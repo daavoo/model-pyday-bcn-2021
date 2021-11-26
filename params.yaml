@@ -14,7 +14,7 @@ train:
   - Comida
   - Hobby
   - Libro
-  learning_rate: 0.0005
+  learning_rate: 0.0003
 
 eval:
   output_folder: outs/eval
