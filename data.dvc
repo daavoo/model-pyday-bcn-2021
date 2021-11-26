@@ -1,0 +1,13 @@
+md5: 810590d664f310165c746e12a45b6620
+frozen: true
+deps:
+- path: data
+  repo:
+    url: https://github.com/daavoo/dataset-pyday-bcn-2021.git
+    rev: solution
+    rev_lock: 5de7127c3bdc75f1ea8aa05e5986402df7fa0348
+outs:
+- md5: b44385ab179fca2f94480b9a22eab226.dir
+  size: 22195
+  nfiles: 30
+  path: data
