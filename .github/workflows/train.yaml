@@ -37,7 +37,7 @@ jobs:
       - name: CML PR 
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cml pr "dvclive.json" "dvclive/*" "outs/*" "dvc.lock"
+        run: cml pr "dvclive.json" "dvclive/*" "outs/*" "outs/**/*" "dvc.lock"
 
       - name: CML Report
         env:
