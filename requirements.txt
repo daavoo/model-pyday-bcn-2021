@@ -1,6 +1,6 @@
 datasets>=1.15
 dvc[gdrive]==2.8.3
-dvclive>=0.4.4
+dvclive>=0.4.5
 fire==0.4.0
 loguru==0.5.3
 scikit-learn>=1.0.1

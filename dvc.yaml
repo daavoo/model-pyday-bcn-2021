@@ -30,7 +30,7 @@ stages:
     live:
       dvclive:
         summary: true
-        html: true
+        html: false
         cache: false
 
   eval:
