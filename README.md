@@ -53,3 +53,20 @@ https://colab.research.google.com/drive/1Xe96hFDCrzL-Vt4Zj-cVHOxUgu-fyuBW
 - Change `learning_rate`.
 
 - Select `Create a new branch for this commit and start a pull request`
+
+---
+
+## Bonus: Operation Vacation
+
+- Update `Train` workflow to run on cron schedule.
+
+![imagen](https://user-images.githubusercontent.com/12677733/143140752-e445b36a-5fe1-4ccb-88bb-a7fa7a88f18c.png)
+
+
+## Bonus: Run Pipeline from Studio
+
+- https://studio.iterative.ai
+
+- Access studio view: https://dvc.org/doc/studio/get-started
+
+- Run the pipeline editing the params: https://dvc.org/doc/studio/user-guide/run-experiments
