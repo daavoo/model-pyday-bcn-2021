@@ -1,1 +1,1 @@
-{"train_texts": 21, "val_texts": 9, "train_labels": {"Comida": 7, "Hobby": 7, "Libro": 7}, "val_labels": {"Libro": 3, "Comida": 3, "Hobby": 3}}
+{"train_texts": 21, "val_texts": 9, "train_labels": {"Libro": 7, "Hobby": 7, "Comida": 7}, "val_labels": {"Libro": 3, "Hobby": 3, "Comida": 3}}
