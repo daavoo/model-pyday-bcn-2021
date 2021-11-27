@@ -35,6 +35,21 @@ You should be able to follow all the steps bellow without leaving the browser.
 
 ## 2. Run `Import Dataset` Workflow
 
+- Create folder on Google Drive.
+
+- Copy the URL.
+
+<details>
+<summary>Add remote to `.dvc/config`</summary>
+
+```
+[core]
+    remote = myremote
+['remote "myremote"']
+    url = gdrive://{YOUR_URL}
+```
+
+</details>
 
 <details>
 <summary>Create `secrets.GDRIVE_CREDENTIALS_DATA`</summary>
