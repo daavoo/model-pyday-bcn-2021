@@ -1,5 +1,7 @@
 # model-pyday-bcn-2021
 
+![Making MLOps Uncool Again](https://user-images.githubusercontent.com/12677733/143686938-85dddf77-7680-4e2a-b623-00e4373b1041.png)
+
 <details>
 <summary>0. Repo setup (already run for you)
 </summary>
